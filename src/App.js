@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import ModeSelected from "./ModeSelected";
 import "./App.css";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       .then((data) => {
         setModes(data);
       });
-  });
+  }, []);
   const handleSelectedMode = (event) => {
     setSelectedMode(event.target.value);
     console.log(event.target.value);
@@ -30,6 +30,7 @@ function App() {
         })}
       </select>
       <p>You selected mode: {selectedMode}</p>
+      <ModeSelected selectedMode={selectedMode} />
     </div>
   );
 }
