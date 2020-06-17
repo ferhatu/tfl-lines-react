@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [modes, setModes] = useState([]);
+  const [selectedMode, setSelectedMode] = useState("");
   useEffect(() => {
     fetch("https://api.tfl.gov.uk/Line/Meta/Modes")
       .then((res) => res.json())
@@ -11,12 +12,25 @@ function App() {
         setModes(data);
       });
   });
+  const handleSelectedMode = (event) => {
+    setSelectedMode(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
-    <select id="select-bar">
-      {modes.map((modes, index) => {
-        return <option key={index}>{modes.modeName}</option>;
-      })}
-    </select>
+    <div>
+      <select className="select-bar" onChange={handleSelectedMode}>
+        <option>Choose a Mode of Transport</option>
+        {modes.map((modes, index) => {
+          return (
+            <option key={index} value={modes.modeName}>
+              {modes.modeName}
+            </option>
+          );
+        })}
+      </select>
+      <p>You selected mode: {selectedMode}</p>
+    </div>
   );
 }
 
