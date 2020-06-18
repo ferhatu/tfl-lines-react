@@ -6,18 +6,20 @@ body {
   background-color: rgb(203, 207, 207);
 }
 .route {
+  align-items: center;
   display: flex;
   justify-content: center;
 }
 .origin-route {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   background-color: rgb(33, 33, 218);
   color: white;
 }
 .destination-route {
-  width: 150px;
-  height: 200px;
+  margin-left: 50px;
+  width: 200px;
+  height: 250px;
   background-color: rgb(33, 33, 218);
   color: white;
 }
