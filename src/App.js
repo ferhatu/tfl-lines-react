@@ -14,7 +14,7 @@ function App() {
   }, []);
   const handleSelectedMode = (event) => {
     setSelectedMode(event.target.value);
-    console.log(event.target.value);
+    console.log(selectedMode);
   };
 
   return (
@@ -30,7 +30,7 @@ function App() {
         })}
       </select>
       <p>You selected mode: {selectedMode}</p>
-      <ModeSelected selectedMode={selectedMode} />
+      {selectedMode && <ModeSelected selectedMode={selectedMode} />}
     </div>
   );
 }

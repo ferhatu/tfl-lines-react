@@ -1,27 +1,41 @@
 import React, { useState, useEffect } from "react";
+import Route from "./Route";
 
 const ModeSelected = (props) => {
   const [line, setLine] = useState([]);
+  const [selectedLine, setSelectedLine] = useState([]);
+
   useEffect(() => {
     fetch(`https://api.tfl.gov.uk/Line/Mode/${props.selectedMode}`)
       .then((res) => res.json())
       .then((data) => {
-        setLine(data);
         console.log(data);
-        console.log({ line });
+        setLine(data);
       });
   }, [props.selectedMode]);
-  return (
-    <div></div>
-//  <select>
-//    {line.map((item)=>{
-//      return (
-//        <option>
-//          {item.name}
-//        </option>
-//      )
-//    })}
-//  </select>
-  )
+
+  const handleSelectedLine = (event) => {
+    // console.log(e);
+    setSelectedLine(event.target.value);
+  };
+
+  return line.length > 0 ? (
+    <div>
+      <select className="select-bar" onChange={handleSelectedLine}>
+        <option>Choose a Line</option>
+        {line.map((item, index) => {
+          return (
+            <option key={index} value={item.name}>
+              {item.id}
+            </option>
+          );
+        })}
+      </select>
+
+      <Route selectedLine={selectedLine} />
+    </div>
+  ) : (
+    <p style={{ color: "red" }}>No lines on this mode</p>
+  );
 };
 export default ModeSelected;
