@@ -5,3 +5,19 @@ body {
   height: 30px;
   background-color: rgb(203, 207, 207);
 }
+.route {
+  display: flex;
+  justify-content: center;
+}
+.origin-route {
+  width: 150px;
+  height: 200px;
+  background-color: rgb(33, 33, 218);
+  color: white;
+}
+.destination-route {
+  width: 150px;
+  height: 200px;
+  background-color: rgb(33, 33, 218);
+  color: white;
+}

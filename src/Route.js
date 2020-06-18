@@ -13,13 +13,13 @@ const Route = (props) => {
   }, [props.selectedLine]);
   console.log(selectedRoute.routeSections);
   return (
-    <div>
-      <p>
+        <div className ="route">
+      <p className = "origin-route">
         {selectedRoute.routeSections && selectedRoute.routeSections[0]
           ? selectedRoute.routeSections[0].originationName
           : null}
       </p>
-      <p>
+          <p className="destination-route">
         {selectedRoute.routeSections && selectedRoute.routeSections[0]
           ? selectedRoute.routeSections[0].destinationName
           : null}
