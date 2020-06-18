@@ -2,19 +2,28 @@ import React, { useState, useEffect } from "react";
 
 const Route = (props) => {
   const [selectedRoute, setSelectedRoute] = useState({});
-
+  //   console.log(props.selectedLine);
   useEffect(() => {
     fetch(`https://api.tfl.gov.uk/Line/${props.selectedLine}/Route`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setSelectedRoute(data);
       });
   }, [props.selectedLine]);
+  console.log(selectedRoute.routeSections);
   return (
     <div>
-      {console.log(typeof selectedRoute)}
-      {/* <p>{selectedRoute.routeSections[0].originationName}</p> */}
+      <p>
+        {selectedRoute.routeSections && selectedRoute.routeSections[0]
+          ? selectedRoute.routeSections[0].originationName
+          : null}
+      </p>
+      <p>
+        {selectedRoute.routeSections && selectedRoute.routeSections[0]
+          ? selectedRoute.routeSections[0].destinationName
+          : null}
+      </p>
     </div>
   );
 };

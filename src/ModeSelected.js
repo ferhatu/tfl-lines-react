@@ -9,7 +9,7 @@ const ModeSelected = (props) => {
     fetch(`https://api.tfl.gov.uk/Line/Mode/${props.selectedMode}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setLine(data);
       });
   }, [props.selectedMode]);
